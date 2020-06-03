@@ -79,7 +79,7 @@ func initFunc(destURL string) (backupstore.BackupStoreDriver, error) {
 func (b *BackupStoreDriver) mount() error {
 	var err error
 	if !util.IsMounted(b.mountDir) {
-		_, err = util.Execute("mount", []string{"-t", "nfs4", b.serverPath, b.mountDir})
+		_, err = util.Execute("mount", []string{"-t", "nfs4", "-o", "soft", b.serverPath, b.mountDir})
 	}
 	return err
 }
